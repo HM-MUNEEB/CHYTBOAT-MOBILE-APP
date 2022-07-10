@@ -31,6 +31,7 @@ export default function Search() {
     console.log(searchResult);
   }
   function handleUserAddition() {
+    console.log("USER ADDITTION UNITIATED!!!");
     AddContact(user.displayName, searchResult.userName, setLoading);
   }
 

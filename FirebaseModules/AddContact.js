@@ -4,7 +4,7 @@ import { Timestamp } from "firebase/firestore";
 import { uid } from "uid";
 
 export function AddContact(currentUserName, targetUserName, setLoading) {
-  //add reference to the current user
+  //Add reference to the target user
   var taskCompleted = 0;
   const UUID = uid(32);
   try {
@@ -27,6 +27,8 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
   } catch (e) {
     console.log("Error Adding to realtime DB:  ", e);
   }
+
+  //Add reference to the Current user
   try {
     const userRef1 = ref(dbRT, "users/" + currentUserName + "/data/friends");
     const locUserRef1 = push(userRef1);
@@ -50,6 +52,7 @@ export function AddContact(currentUserName, targetUserName, setLoading) {
   chatStack(UUID);
 }
 
+//Initiated Chatstack at DBRT
 function chatStack(UUID) {
   try {
     set(ref(dbRT, "chatStack/" + UUID), {

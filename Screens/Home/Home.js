@@ -39,30 +39,42 @@ export default function Home({ navigation }) {
     handleSetContactList();
   }, [userData]);
 
-  function handleContactPress(UUID, name) {
-    console.log("PRESSED");
-    navigation.navigate("Chat");
-  }
-  function handleLogout() {
-    logout();
-  }
+  useEffect(() => {
+    console.log("CONTACT LIST : ");
+    console.log(showContactList);
+  }, [showContactList]);
+
   function handleSetContactList() {
     setShowContactList([]);
-    console.log("Contact List : " + contactList1);
+    console.log("Contact List 1: ");
+    console.log(contactList1);
     if (userData && !executed) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
       setExecuted(true);
     }
     var data;
+    var arr = []; //Formats Objects of object into simple array, latter pushed to state
     for (let i = 0; i < contactList1.length; i++) {
       const obj = contactList1[i];
+      console.log("1:");
       console.log(obj);
       var data = Object.values(obj)[0];
+      console.log("2:");
       console.log(data);
-      setShowContactList((old) => [...old, data]);
+      arr.push(data);
+      //setShowContactList((old) => [...old, data]);
     }
-    console.log(showContactList);
+    setShowContactList(arr); //arr which is formated, being pushed to the state, latter used to show contacts
   }
+
+  function handleContactPress(UUID, name) {
+    console.log("PRESSED");
+    navigation.navigate("Chat", { UUID, name });
+  }
+  function handleLogout() {
+    logout();
+  }
+
   function handleKey() {
     return uid(16);
   }
@@ -74,7 +86,7 @@ export default function Home({ navigation }) {
           <Text style={styles.appNameText}>Chytboat</Text>
         </View>
         <View style={styles.headerContentContainer}>
-          <Pressable onPress={handleSetContactList}>
+          <Pressable onPress={handleSetContactList} key={handleKey()}>
             <View style={styles.searchIcon}>
               <Icon name="refresh" size={25} color="white" />
             </View>
@@ -106,26 +118,24 @@ export default function Home({ navigation }) {
           {executed ? (
             showContactList.map((item) => {
               return (
-                <Pressable key={handleKey()} onPress={handleContactPress}>
+                <Pressable
+                  key={item.name + handleKey()}
+                  onPress={() =>
+                    navigation.navigate("Chat", {
+                      UUID: item.UUID,
+                      NAME: item.name,
+                    })
+                  }
+                >
                   <Contact userName={item.name} />
                 </Pressable>
               );
             })
           ) : (
-            <View></View>
+            <View>
+              <Text>No Contacts to show!!!</Text>
+            </View>
           )}
-          {/* <Pressable onPress={handleContactPress}>
-            <Contact userName="Munyyb" />
-          </Pressable>
-          <Pressable onPress={handleContactPress}>
-            <Contact userName="Umer" />
-          </Pressable>
-          <Pressable onPress={handleContactPress}>
-            <Contact userName="Saani" />
-          </Pressable>
-          <Pressable onPress={handleContactPress}>
-            <Contact userName="Moeen" />
-          </Pressable> */}
         </View>
       </ScrollView>
     </View>

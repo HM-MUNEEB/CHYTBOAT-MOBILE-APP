@@ -16,17 +16,21 @@ import { useAuth } from "../../context/authContext/authContext";
 import { ReadMessages, SendMessages } from "../../FirebaseModules/Messages";
 import { uid } from "uid";
 
-export default function Chat({ navigation }) {
+export default function Chat({ navigation, route }) {
   const scrollViewRef = useRef();
   const [msg, setMsg] = useState("");
   const { user } = useAuth();
-  //1 is current user
   const [MsgContent, setMsgContent] = useState([]);
   const [messages, setMessages] = useState(null);
   const [messages1, setMessages1] = useState([]);
   const [executed, setExecuted] = useState(false);
 
-  const CHATUID = "98ee24af197091de5d1d287c1ea1ba54";
+  const user_info = {
+    UUID: route.params.UUID,
+    NAME: route.params.NAME,
+  };
+
+  const CHATUID = user_info.UUID;
 
   function handleGoBackBtn() {
     console.log("PRESSED GOBACK!!");
@@ -34,7 +38,6 @@ export default function Chat({ navigation }) {
   }
   function handleInputMessage(e) {
     setMsg(e);
-    console.log(msg);
   }
   useEffect(() => {
     ReadMessages(CHATUID, setMessages);
@@ -95,51 +98,7 @@ export default function Chat({ navigation }) {
   function handleMsgKey() {
     return uid(16);
   }
-  // function autoReply() {
-  //   if (msg == "hi") {
-  //     setTimeout(() => {
-  //       console.log("Message Recieved!!!");
-  //       //Pushes the input Message "msg" to state array MsgContent
-  //       setMsgContent((old) => [
-  //         ...old,
-  //         {
-  //           key: msg + Date.now() + "bye",
-  //           Avatar: "Defualt",
-  //           Content: "hello",
-  //           User: 2,
-  //         },
-  //       ]);
-  //     }, 1000);
-  //   } else if (msg == "bye") {
-  //     setTimeout(() => {
-  //       console.log("Message Recieved!!!");
-  //       //Pushes the input Message "msg" to state array MsgContent
-  //       setMsgContent((new1) => [
-  //         ...new1,
-  //         {
-  //           key: msg + Date.now() + "bye",
-  //           Avatar: "Defualt",
-  //           Content: "bye",
-  //           User: 2,
-  //         },
-  //       ]);
-  //     }, 1000);
-  //   } else {
-  //     setTimeout(() => {
-  //       console.log("Message Recieved!!!");
-  //       //Pushes the input Message "msg" to state array MsgContent
-  //       setMsgContent((old) => [
-  //         ...old,
-  //         {
-  //           key: msg + Date.now() + "bye",
-  //           Avatar: "Defualt",
-  //           Content: "Bye Bro",
-  //           User: 2,
-  //         },
-  //       ]);
-  //     }, 1000);
-  //   }
-  // }
+
   return (
     <View style={styles.chat}>
       <View style={styles.chatHeader}>
@@ -157,7 +116,7 @@ export default function Chat({ navigation }) {
                 source={require("./assets/avatar.png")}
               />
               <View style={styles.userContent}>
-                <Text style={styles.userNameText}>{user.displayName}</Text>
+                <Text style={styles.userNameText}>{user_info.NAME}</Text>
               </View>
             </View>
           </View>
