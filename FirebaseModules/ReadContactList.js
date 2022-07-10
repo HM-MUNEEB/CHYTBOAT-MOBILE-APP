@@ -5,7 +5,8 @@ export function ReadContactList(user, setLoading, setUserData) {
   try {
     const starCountRef = ref(dbRT, "users/" + user + "/data/friends");
     onValue(starCountRef, (snapshot) => {
-      console.log("Contact List (1): " + snapshot.val());
+      console.log("Contact List - FBModule: ");
+      console.log(snapshot.val());
       setUserData(snapshot.val());
     });
   } catch (e) {

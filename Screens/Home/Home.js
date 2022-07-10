@@ -30,28 +30,39 @@ export default function Home({ navigation }) {
     }
     console.log("ROOT USER: " + user);
   }, [user]);
-  useEffect(() => {
-    if (user) {
-      ReadContactList(user.displayName, setLoading, setUserData);
-    }
-  }, [user]);
-  useEffect(() => {
-    handleSetContactList();
-  }, [userData]);
 
+  //Gets contactlist on Components Mount
   useEffect(() => {
-    console.log("CONTACT LIST : ");
-    console.log(showContactList);
-  }, [showContactList]);
+    ReadContactList(user.displayName, setLoading, setUserData);
+  }, []);
 
-  function handleSetContactList() {
-    setShowContactList([]);
-    console.log("Contact List 1: ");
-    console.log(contactList1);
-    if (userData && !executed) {
+  //When contactlist changes, this formats object in numerable array
+  useEffect(() => {
+    if (userData) {
       setContactList1(Object.entries(userData).map((e) => ({ [e[0]]: e[1] })));
       setExecuted(true);
     }
+  }, [userData]);
+
+  //When contactlist becomes numerable array, this formats nested objects in numerable array form
+  useEffect(() => {
+    console.log("Contact List 1: ");
+    console.log(contactList1);
+    const check = handleSetContactList();
+    if (check) {
+      setExecuted(true);
+    }
+  }, [contactList1]);
+
+  //Displays ContactList when some change happends
+  // useEffect(() => {
+  //   console.log("CONTACT LIST : ");
+  //   console.log(showContactList);
+  // }, [showContactList]);
+
+  function handleSetContactList() {
+    setShowContactList([]);
+
     var data;
     var contactListFormated = []; //Formats Objects of object into simple array, latter pushed to state
     for (let i = 0; i < contactList1.length; i++) {
@@ -64,6 +75,7 @@ export default function Home({ navigation }) {
       contactListFormated.push(data);
     }
     setShowContactList(contactListFormated); //arr which is formated, being pushed to the state, latter used to show contacts
+    return true;
   }
 
   function handleContactPress(UUID, name) {
