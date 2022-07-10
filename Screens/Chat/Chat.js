@@ -63,13 +63,18 @@ export default function Chat({ navigation, route }) {
   }
   function handleMessagesContent() {
     setMsgContent([]);
+    console.log("\n----------------STARTED MSG FORMATTING----------------\n");
     messages1.map((item) => {
       const obj = item;
+      console.log("Process 1:");
+      console.log(obj);
       var data = Object.values(obj)[0];
+      console.log("Process 2:");
       console.log(data);
       setMsgContent((old) => [...old, data]);
     });
     console.log(MsgContent);
+    console.log("\n----------------ENDED MSG FORMATTING----------------\n");
     return true;
   }
   function renderMessage(m) {
