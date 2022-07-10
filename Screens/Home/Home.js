@@ -53,18 +53,17 @@ export default function Home({ navigation }) {
       setExecuted(true);
     }
     var data;
-    var arr = []; //Formats Objects of object into simple array, latter pushed to state
+    var contactListFormated = []; //Formats Objects of object into simple array, latter pushed to state
     for (let i = 0; i < contactList1.length; i++) {
       const obj = contactList1[i];
-      console.log("1:");
+      console.log("Process 1:");
       console.log(obj);
       var data = Object.values(obj)[0];
-      console.log("2:");
+      console.log("Process 2:");
       console.log(data);
-      arr.push(data);
-      //setShowContactList((old) => [...old, data]);
+      contactListFormated.push(data);
     }
-    setShowContactList(arr); //arr which is formated, being pushed to the state, latter used to show contacts
+    setShowContactList(contactListFormated); //arr which is formated, being pushed to the state, latter used to show contacts
   }
 
   function handleContactPress(UUID, name) {
