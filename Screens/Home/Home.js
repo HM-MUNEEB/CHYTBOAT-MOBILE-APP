@@ -62,7 +62,7 @@ export default function Home({ navigation }) {
 
   function handleSetContactList() {
     setShowContactList([]);
-
+    console.log("\n----------------STARTED FORMATTING----------------\n");
     var data;
     var contactListFormated = []; //Formats Objects of object into simple array, latter pushed to state
     for (let i = 0; i < contactList1.length; i++) {
@@ -75,6 +75,7 @@ export default function Home({ navigation }) {
       contactListFormated.push(data);
     }
     setShowContactList(contactListFormated); //arr which is formated, being pushed to the state, latter used to show contacts
+    console.log("\n----------------ENDED FORMATTING----------------\n");
     return true;
   }
 
@@ -97,11 +98,6 @@ export default function Home({ navigation }) {
           <Text style={styles.appNameText}>Chytboat</Text>
         </View>
         <View style={styles.headerContentContainer}>
-          <Pressable onPress={handleSetContactList} key={handleKey()}>
-            <View style={styles.searchIcon}>
-              <Icon name="refresh" size={25} color="white" />
-            </View>
-          </Pressable>
           <Pressable onPress={handleLogout}>
             <View style={styles.searchIcon}>
               <IconE name="logout" size={25} color="white" />
