@@ -64,16 +64,26 @@ export default function Chat({ navigation, route }) {
   function handleMessagesContent() {
     setMsgContent([]);
     console.log("\n----------------STARTED MSG FORMATTING----------------\n");
+    var MsgsFormated = [];
     messages1.map((item) => {
       const obj = item;
       console.log("Process 1:");
       console.log(obj);
-      var data = Object.values(obj)[0];
+      var data;
+      data = Object.values(obj)[0];
       console.log("Process 2:");
       console.log(data);
-      setMsgContent((old) => [...old, data]);
+      MsgsFormated.push(data);
     });
-    console.log(MsgContent);
+    //Deletes CHANNEL CREATED ON array item
+    var index = MsgsFormated.findIndex(
+      (p) => Object.keys(p) === "channelCreatedOn"
+    );
+    console.log("index: " + index);
+    MsgsFormated.pop(index);
+
+    console.log(MsgsFormated);
+    setMsgContent(MsgsFormated); //Pushes Code to the state
     console.log("\n----------------ENDED MSG FORMATTING----------------\n");
     return true;
   }
