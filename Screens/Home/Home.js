@@ -46,8 +46,6 @@ export default function Home({ navigation }) {
 
   //When contactlist becomes numerable array, this formats nested objects in numerable array form
   useEffect(() => {
-    console.log("Contact List 1: ");
-    console.log(contactList1);
     const check = handleSetContactList();
     if (check) {
       setExecuted(true);
@@ -78,11 +76,10 @@ export default function Home({ navigation }) {
     console.log("\n----------------ENDED FORMATTING----------------\n");
     return true;
   }
-
-  function handleContactPress(UUID, name) {
-    console.log("PRESSED");
-    navigation.navigate("Chat", { UUID, name });
-  }
+  // function handleContactPress(UUID, name) {
+  //   console.log("PRESSED");
+  //   navigation.navigate("Chat", { UUID, name });
+  // }
   function handleLogout() {
     logout();
   }

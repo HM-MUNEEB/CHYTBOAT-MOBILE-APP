@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import HomeChatStack from "./Navigation/HomeChatStack";
 import { AuthContextProvider } from "./context/authContext/authContext";
+
 const MyTheme = {
   ...DefaultTheme,
   colors: {
