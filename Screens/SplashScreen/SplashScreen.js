@@ -19,7 +19,7 @@ export default function SplashScreen({ navigation }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (userRef.current) {
-        navigation.navigate("SetupProfile");
+        navigation.navigate("Navbar");
       } else {
         navigation.navigate("Login");
       }

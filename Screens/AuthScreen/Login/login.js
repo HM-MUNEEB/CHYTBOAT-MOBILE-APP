@@ -30,7 +30,7 @@ const LoginModule = ({ navigation }) => {
   useEffect(() => {
     if (user) {
       if (user.displayName) {
-        navigation.navigate("SetupProfile");
+        navigation.navigate("Navbar");
       }
     } else {
       // navigation.navigate("Login");
