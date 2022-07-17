@@ -1,6 +1,7 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import LoginModule from "../Screens/AuthScreen/Login/login";
 import Register from "../Screens/AuthScreen/Register/register";
+import SplashScreen from "../Screens/SplashScreen/SplashScreen";
 
 const Stack = createStackNavigator();
 
@@ -18,7 +19,7 @@ export default function LoginRegisterStack() {
   };
   return (
     <Stack.Navigator
-      initialRouteName="Login"
+      initialRouteName="SplashScreen"
       screenOptions={{
         headerShown: false,
         animationEnabled: true,
@@ -29,6 +30,7 @@ export default function LoginRegisterStack() {
         },
       }}
     >
+      <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="Login" component={LoginModule} />
       <Stack.Screen name="Register" component={Register} />
     </Stack.Navigator>

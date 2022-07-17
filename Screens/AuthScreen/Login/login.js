@@ -44,8 +44,6 @@ const LoginModule = ({ navigation }) => {
 
   return (
     <View>
-      {splashVisible ? <SplashScreen /> : <></>}
-
       <View style={styles.container}>
         {/* <ScrollView> */}
         <View style={styles.logoContainer}>
