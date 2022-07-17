@@ -15,18 +15,27 @@ export default StyleSheet.create({
     zIndex: 2,
   },
   innerContainer: {
-    height: "25%",
+    height: "35%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
   },
   logoContainer: {},
-  img: {},
+  logoContainerStack: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  img: {
+    marginTop: 35,
+    height: 130,
+    width: 130,
+  },
   text: {
     color: "white",
-    fontSize: 20,
-    // marginLeft: 15,
+    fontSize: 24,
   },
   laodingContainer: {},
 });

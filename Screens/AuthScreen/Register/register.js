@@ -42,10 +42,11 @@ const Register = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <View>
-          <Image style={styles.img} source={require("../assets/logo.png")} />
-        </View>
-        <View>
+        <View style={styles.logoContainerStack}>
+          <Image
+            style={styles.img}
+            source={require("../../../assets/logo.png")}
+          />
           <Text style={styles.text}>ChytBoat</Text>
         </View>
       </View>

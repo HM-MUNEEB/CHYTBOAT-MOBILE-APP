@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
-    // position: "absolute",
     width: "100%",
     alignItems: "center",
     backgroundColor: "#1E1E1E",
@@ -19,8 +18,6 @@ export default StyleSheet.create({
     width: 320,
     height: 400,
     padding: 30,
-    marginTop: 20,
-    // position: "absolute",
     backgroundColor: "#363434",
     borderRadius: 10,
     borderStyle: "solid",
@@ -31,13 +28,20 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  logoContainerStack: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
   img: {
     marginTop: 35,
+    height: 110,
+    width: 110,
   },
   text: {
     color: "white",
-    fontSize: 20,
-    // marginLeft: 15,
+    fontSize: 22,
   },
   seperatorStack: {
     width: "100%",

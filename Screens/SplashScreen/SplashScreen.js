@@ -30,10 +30,11 @@ export default function SplashScreen({ navigation }) {
     <View style={styles.splashContainer}>
       <View style={styles.innerContainer}>
         <View style={styles.logoContainer}>
-          <View>
-            <Image style={styles.img} source={require("./assets/logo.png")} />
-          </View>
-          <View>
+          <View style={styles.logoContainerStack}>
+            <Image
+              style={styles.img}
+              source={require("../../assets/logo.png")}
+            />
             <Text style={styles.text}>ChytBoat</Text>
           </View>
         </View>
