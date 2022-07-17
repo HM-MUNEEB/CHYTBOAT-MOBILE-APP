@@ -1,5 +1,4 @@
 import { View, Text, Image, ScrollView } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
 import styles from "./Friends.style";
 import IconM from "react-native-vector-icons/MaterialCommunityIcons";
 import IconF from "react-native-vector-icons/Feather";
@@ -15,14 +14,6 @@ export default function Friends() {
       <View style={styles.header}>
         <View style={styles.appName}>
           <Text style={styles.appNameText}>Chytboat</Text>
-        </View>
-        <View style={styles.headerContentContainer}>
-          <View style={styles.userAvatar}>
-            <Image source={require("./assets/avatar.png")} />
-          </View>
-          <View style={styles.settingIcon}>
-            <Icon name="settings-outline" size={25} color="white" />
-          </View>
         </View>
       </View>
       <ScrollView>
