@@ -14,17 +14,24 @@ export default function SplashScreen({ navigation }) {
 
   useEffect(() => {
     userRef.current = user;
+    console.log(typeof null);
+
+    if (user) {
+      navigation.navigate("Navbar");
+    } else if (user === false) {
+      navigation.navigate("Login");
+    }
   }, [user]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (userRef.current) {
-        navigation.navigate("Navbar");
-      } else {
-        navigation.navigate("Login");
-      }
-    }, 3000);
-    return () => clearTimeout(timer);
+    // const timer = setTimeout(() => {
+    //   if (userRef.current) {
+    //     navigation.navigate("Navbar");
+    //   } else {
+    //     navigation.navigate("Login");
+    //   }
+    // }, 3000);
+    // return () => clearTimeout(timer);
   }, []);
   return (
     <View style={styles.splashContainer}>
