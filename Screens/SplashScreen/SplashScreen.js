@@ -5,34 +5,14 @@ import { useAuth } from "../../context/authContext/authContext";
 
 export default function SplashScreen({ navigation }) {
   const { user } = useAuth();
-  const [authCheck, setAuthCheck] = useState(false);
-
-  //Used useRef as the setTimeOut Behavior is different when being used in useEffect
-  //problem Reference https://github.com/facebook/react/issues/14010
-  const userRef = useRef(user);
-  userRef.current = user;
 
   useEffect(() => {
-    userRef.current = user;
-    console.log(typeof null);
-
     if (user) {
       navigation.navigate("Navbar");
     } else if (user === false) {
       navigation.navigate("Login");
     }
   }, [user]);
-
-  useEffect(() => {
-    // const timer = setTimeout(() => {
-    //   if (userRef.current) {
-    //     navigation.navigate("Navbar");
-    //   } else {
-    //     navigation.navigate("Login");
-    //   }
-    // }, 3000);
-    // return () => clearTimeout(timer);
-  }, []);
   return (
     <View style={styles.splashContainer}>
       <View style={styles.innerContainer}>

@@ -21,7 +21,7 @@ const LoginModule = ({ navigation }) => {
   const [password, setPassword] = useState();
 
   useEffect(() => {
-    if (typeof user === "object") {
+    if (user) {
       if (user.displayName) {
         navigation.navigate("Navbar");
       }
