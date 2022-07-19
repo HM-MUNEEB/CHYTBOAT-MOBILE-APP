@@ -19,7 +19,7 @@ const Register = ({ navigation }) => {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   useEffect(() => {
-    if (user === true) {
+    if (typeof user === "object") {
       if (user.displayName) {
         navigation.navigate("SetupProfile");
       }
