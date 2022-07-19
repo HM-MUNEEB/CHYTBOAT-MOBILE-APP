@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
         });
         //console.log(user);
       } else {
-        setUser(null);
+        setUser(false);
       }
     });
 
@@ -102,7 +102,7 @@ export const AuthContextProvider = ({ children }) => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        setUser(null);
+        setUser(false);
         //console.log(user);
       })
       .catch((error) => {

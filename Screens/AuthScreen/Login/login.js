@@ -19,16 +19,9 @@ const LoginModule = ({ navigation }) => {
   const { btnClickProcessing } = useLoading();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [splashVisible, setSplashVisible] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      setSplashVisible(false);
-    }, 3000);
-  }, []);
-
-  useEffect(() => {
-    if (user) {
+    if (user === true) {
       if (user.displayName) {
         navigation.navigate("Navbar");
       }
